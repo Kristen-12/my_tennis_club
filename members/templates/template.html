@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="{% static 'myglobal.css' %}">
+<body>
+  <div>
+    {% if greeting == 1 %}
+    <h1>Hello</h1>
+  {% else %}
+    <h1>Bye</h1>
+  {% endif %}
+    <ul>
+        {% for x in mymembers %}
+          <li>{{ x.lastname }}</li>
+        {% endfor %}
+    </ul>
+    <img src="{% static 'tech.jpg' %}">
+    <p>In views.py you can see how to import and fetch members from the database.</p>
+  </div>
+
+      
+    {% if greeting == 1 %}
+    <h1>Hello</h1>
+    {% endif %}
+
+  {% if greeting == 1 %}
+    <h1>Welcome</h1>
+  {% elif greeting == 2 %}
+    <h1>Hello</h1>
+  {% endif %} 
+
+  {% if greeting == 1 %}
+  <h1>Hello</h1>
+  {% elif greeting == 2 %}
+    <h1>Welcome</h1>
+  {% else %}
+    <h1>Goodbye</h1>
+  {% endif %} 
+
+  {% if greeting == 1 and day == "Friday" %}
+  <h1>Hello Weekend!</h1>
+  {% endif %} 
+
+  {% if greeting == 1 and day == "Friday" or greeting == 5 %}
+  <h1>Happy Friday!</h1>
+  {% endif %}
+
+  {% if 'Orange' not in fruits %}
+  <h1>Hello orange</h1>
+  {% else %}
+    <h1>Goodbye</h1>
+  {% endif %}
+
+  <p>In views.py you can see what the fruits variable looks like.</p>
+
+  {% if x == y %}
+  <h1>YES1</h1>
+  {% else %}
+    <h1>NO1</h1>
+  {% endif %}
+
+  {% if x == y %}
+  <h1>YES2</h1>
+  {% else %}
+  <h1>NO2</h1>
+  {% endif %}
+
+  {% with var1=x var2=x %}
+  {% if var1 is var2 %}
+    <h1>YES3</h1>
+  {% else %}
+    <h1>NO3</h1>
+  {% endif %}
+  {% endwith %}
+
+  <p>The x variable is created in views.py, and both var1 and var2 points to x.</p>
+
+  {% if x is not y %}
+  <h1>YES</h1>
+  {% else %}
+    <h1>NO</h1>
+  {% endif %} 
+  <p>To check if two objects are not the same.</p>
+<hr>
+#for loop
+
+  {% for x in fruits %}
+  <h1>{{ x }}</h1>
+  {% endfor %}
+
+  <p>In views.py you can see what the fruits variable looks like.</p>
+
+  {% for x in cars %}
+  <h1>{{ x.brand }}</h1>
+  <p>{{ x.model }}</p>
+  <p>{{ x.year }}</p>
+  {% endfor %} 
+
+  <p>In views.py you can see what the cars variable looks like.</p>
+
+<hr>
+  {% for x in mymembers %}
+  <h1>{{ x.id }}</h1>
+  <p>
+    {{ x.firstname }}
+    {{ x.lastname }}
+    {{ x.phone}}
+  </p>
+  {% endfor %}  
+
+  <p>In views.py you can see how to import and fetch members from the database.</p>
+  <hr>
+  {% for x in mymembers reversed %}
+  <h1>{{ x.id }}</h1>
+  <p>
+    {{ x.firstname }}
+    {{ x.lastname }}
+  </p>
+  {% endfor %} 
+  <p>Reverse In views.py you can see how to import and fetch members from the database.</p> 
+  <hr>
+
+  <ul>
+    {% for x in emptytestobject %}
+      <li>{{ x.firstname }}</li>
+    {% empty %}
+      <li>No members</li>
+    {% endfor %}
+  </ul>
+  <p>In views.py you can see the emptytestobject.</p> 
+  <hr>
+  <ul>
+    {% for x in myobject %}
+      <li>{{ x.firstname }}</li>
+    {% empty %}
+      <li>No members</li>
+    {% endfor %}
+  </ul> 
+  
+  <p>In views.py you can see that there is no myobject variable.</p>
+  <hr>
+  <ul>
+    {% for x in fruits %}
+      <li>{{ forloop.counter }}</li>
+    {% endfor %}
+  </ul>
+  
+  <p>Iteration, starting at 1,Room number of the fruits object looks like.</p>
+<hr>
+  <ul>
+    {% for x in fruits %}
+      <li>{{ forloop.counter0 }}</li>
+    {% endfor %}
+  </ul> 
+  <p>Iteration, starting at 0</p>
+  <hr>
+  <ul>
+    {% for x in fruits %}
+      <li
+        {% if forloop.first %}
+          style='background-color:lightblue;'
+        {% endif %}
+      >{{ x }}</li>
+    {% endfor %}
+  </ul> 
+  <p>Draw a blue background for the first iteration of the loop</p>
+<hr>
+  <ul>
+    {% for x in fruits %}
+      <li
+        {% if forloop.last %}
+          style='background-color:lightblue;'
+        {% endif %}
+      >{{ x }}</li>
+    {% endfor %}
+  </ul> 
+  <p>Last item bg color</p>
+  <hr>
+  <ul>
+    {% for x in fruits %}
+      <li>{{ forloop.revcounter }}</li>
+    {% endfor %}
+  </ul> 
+  <p>Count backward {#end up at 1#}</p>
+  <hr>
+  <ul>
+    {% for x in fruits %}
+      <li>{{ forloop.revcounter0 }}</li>
+    {% endfor %}
+  </ul> 
+  {% comment "this was the original welcome message" %}
+  <p>Count backward endup at 0</p>
+  {% endcomment %}
+  <hr>
+
+  <h1>Hello Footer</h1>
+
+  <p>This page contains a footer in a template.</p>
+
+  {% include 'footer.html' %} 
+ 
+  {%comment%}
+  <a href="footer/">Footer</a>
+  {%endcomment%}
+  <hr>
+  {% include "mymenu.html" with me="Kris" sponsor="KKP" %}
+
+  <h1>Welcome</h1>
+
+  <p>This is my webpage</p>
+  <hr>
+  <table border='1'>
+    <tr>
+      <th>ID</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Phone number</th>
+   
+
+    </tr>
+    {% for x in mymembers %}
+      <tr>
+        <td>{{ x.id }}</td>
+        <td>{{ x.firstname }}</td>
+        <td>{{ x.lastname }}</td>
+        <td>{{ x.phone }}</td>
+        
+      </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>     

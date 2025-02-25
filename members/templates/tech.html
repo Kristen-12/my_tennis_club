@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Technology</title>
+    <link rel="stylesheet" href="{% static 'mystyle.css' %}">
+</head>
+<body>
+    <nav >
+        <div class="topnav" style="font-size: 23px;">
+          <a href="/" style="padding-right: 20%; padding-left: 10%">Home</a>
+          <a href="#" style="padding-right: 20%;">Latest</a>
+          <a href="#" style="padding-right: 20%;">More</a>
+          <a href="/members">Contact Us</a>
+        </div>
+        
+      </nav>      
+    <div>
+        <h1>Latest in Technology</h1>
+        <ul>
+            <li>AI</li>
+            <li>Machine Learning</li>
+            <li>VR and AR</li>
+            <li>5G technology</li>
+            
+        </ul>
+    </div>
+    <img src="{% static 'tech.jpg' %}">
+</body>
+</html>
